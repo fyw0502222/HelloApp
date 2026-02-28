@@ -5,7 +5,7 @@ import streamlit as st
 # Function part
 def age_classifier(image_name):
     age_classifier = pipeline("image-classification",
-                              model="akashmaggon/vit-base-age-classification")
+                              model="prithivMLmods/Age-Classification-SigLIP2")
 
     age_predictions = age_classifier(image_name)
     age_predictions = sorted(age_predictions, key=lambda x: x['score'], reverse=True)
