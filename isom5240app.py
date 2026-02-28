@@ -15,7 +15,7 @@ def main():
     st.write("Title: Age Classification using ViT")
 
     image_name = "middleagedMan.jpg"
-    image_name = Image.open(image_name).convert(""RGB"")
+    image_name = Image.open(image_name).convert("RGB")
 
     # Display results
     st.write("Predicted Age Range:")
