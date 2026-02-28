@@ -1,24 +1,27 @@
 from transformers import pipeline
 from PIL import Image
 import streamlit as st
-# Streamlit UI
-st.write("Title: Age Classification using ViT")
 
-# Load the age classification pipeline
-# The code below should be placed in the main part of the program
-age_classifier = pipeline("image-classification",
-                          model="prithivMLmods/Age-Classification-SigLIP2")
+# Function part
+def age_classifier(image_name):
+    age_classifier = pipeline(""image-classification"",
+                              model=""akashmaggon/vit-base-age-classification"")
 
-image_name = "middleagedMan.jpg"
-image_name = Image.open(image_name).convert("RGB")
+    age_predictions = age_classifier(image_name)
+    age_predictions = sorted(age_predictions, key=lambda x: x['score'], reverse=True)
+    return age_predictions
 
-# Classify age
-age_predictions = age_classifier(image_name)
-st.write(age_predictions)
-age_predictions = sorted(age_predictions, key=lambda x: x['score'], reverse=True)
+def main():
+    st.write(""Title: Age Classification using ViT"")
 
-# Display results
-st.write("Predicted Age Range:")
-st.write(f"Age range: {age_predictions[0]['label']}")
+    image_name = ""middleagedMan.jpg""
+    image_name = Image.open(image_name).convert(""RGB"")
+
+    # Display results
+    st.write(""Predicted Age Range:"")
+    st.write(f""Age range: {age_classifier(image_name)[0]['label']}"")
+
+if __name__ == ""__main__"":
+    main()
 
      
