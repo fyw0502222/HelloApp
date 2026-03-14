@@ -2,7 +2,7 @@ from transformers import AutoModelForSequenceClassification
 from transformers import AutoTokenizer
 import torch
 import numpy as np
-import streamlist as st
+import streamlit as st
 # Testing with the saved model
 model2 = AutoModelForSequenceClassification.from_pretrained("CustomModel_yelp",
                                                             num_labels=5)
